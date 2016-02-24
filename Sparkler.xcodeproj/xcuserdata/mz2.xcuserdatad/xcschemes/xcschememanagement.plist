@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Sparkler.xcscheme</key>
+		<key>SparklerKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Sparkling.xcscheme</key>
+		<key>sparkler.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -23,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>5FCAE2EF1C7DED0400D36D0A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5FCAE3121C7E1D6E00D36D0A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5FCAE3201C7E1D6F00D36D0A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
