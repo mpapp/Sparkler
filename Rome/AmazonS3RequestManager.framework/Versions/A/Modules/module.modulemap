@@ -1,0 +1,10 @@
+framework module AmazonS3RequestManager {
+  umbrella header "Pods-AmazonS3RequestManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module AmazonS3RequestManager.Swift {
+    header "AmazonS3RequestManager-Swift.h"
+}

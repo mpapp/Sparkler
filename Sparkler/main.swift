@@ -1,3 +1,5 @@
+#!/usr/bin/env swift
+
 //
 //  main.swift
 //  Sparkler
@@ -9,4 +11,4 @@
 import Foundation
 import Sparkling
 
-
+print("foobar")

@@ -10,6 +10,9 @@
 		5FCAE2E51C7DEBFE00D36D0A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAE2E41C7DEBFE00D36D0A /* main.swift */; };
 		5FCAE2F31C7DED0400D36D0A /* Sparkling.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCAE2F21C7DED0400D36D0A /* Sparkling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FCAE2F81C7DED0F00D36D0A /* Sparkling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2F01C7DED0400D36D0A /* Sparkling.framework */; };
+		5FCAE3001C7DFF4500D36D0A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2FD1C7DFF4500D36D0A /* Alamofire.framework */; };
+		5FCAE3011C7DFF4500D36D0A /* AmazonS3RequestManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2FE1C7DFF4500D36D0A /* AmazonS3RequestManager.framework */; };
+		5FCAE3021C7DFF4500D36D0A /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +38,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5FCAE2E11C7DEBFE00D36D0A /* Sparkler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sparkler; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FCAE2E11C7DEBFE00D36D0A /* sparkler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sparkler; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCAE2E41C7DEBFE00D36D0A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5FCAE2F01C7DED0400D36D0A /* Sparkling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sparkling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCAE2F21C7DED0400D36D0A /* Sparkling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sparkling.h; sourceTree = "<group>"; };
 		5FCAE2F41C7DED0400D36D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FCAE2FD1C7DFF4500D36D0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Rome/Alamofire.framework; sourceTree = "<group>"; };
+		5FCAE2FE1C7DFF4500D36D0A /* AmazonS3RequestManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AmazonS3RequestManager.framework; path = Rome/AmazonS3RequestManager.framework; sourceTree = "<group>"; };
+		5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Rome/SWXMLHash.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +54,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FCAE2F81C7DED0F00D36D0A /* Sparkling.framework in Frameworks */,
+				5FCAE3011C7DFF4500D36D0A /* AmazonS3RequestManager.framework in Frameworks */,
+				5FCAE3021C7DFF4500D36D0A /* SWXMLHash.framework in Frameworks */,
+				5FCAE3001C7DFF4500D36D0A /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +73,7 @@
 		5FCAE2D81C7DEBFE00D36D0A = {
 			isa = PBXGroup;
 			children = (
+				5FCAE3031C7DFF4700D36D0A /* Frameworks */,
 				5FCAE2E31C7DEBFE00D36D0A /* Sparkler */,
 				5FCAE2F11C7DED0400D36D0A /* Sparkling */,
 				5FCAE2E21C7DEBFE00D36D0A /* Products */,
@@ -73,7 +83,7 @@
 		5FCAE2E21C7DEBFE00D36D0A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5FCAE2E11C7DEBFE00D36D0A /* Sparkler */,
+				5FCAE2E11C7DEBFE00D36D0A /* sparkler */,
 				5FCAE2F01C7DED0400D36D0A /* Sparkling.framework */,
 			);
 			name = Products;
@@ -96,6 +106,16 @@
 			path = Sparkling;
 			sourceTree = "<group>";
 		};
+		5FCAE3031C7DFF4700D36D0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FCAE2FD1C7DFF4500D36D0A /* Alamofire.framework */,
+				5FCAE2FE1C7DFF4500D36D0A /* AmazonS3RequestManager.framework */,
+				5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -110,22 +130,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5FCAE2E01C7DEBFE00D36D0A /* Sparkler */ = {
+		5FCAE2E01C7DEBFE00D36D0A /* sparkler */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FCAE2E81C7DEBFE00D36D0A /* Build configuration list for PBXNativeTarget "Sparkler" */;
+			buildConfigurationList = 5FCAE2E81C7DEBFE00D36D0A /* Build configuration list for PBXNativeTarget "sparkler" */;
 			buildPhases = (
 				5FCAE2DD1C7DEBFE00D36D0A /* Sources */,
 				5FCAE2DE1C7DEBFE00D36D0A /* Frameworks */,
 				5FCAE2DF1C7DEBFE00D36D0A /* CopyFiles */,
+				5FCAE3061C7E004800D36D0A /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				5FCAE2FA1C7DED1300D36D0A /* PBXTargetDependency */,
 			);
-			name = Sparkler;
+			name = sparkler;
 			productName = Sparkler;
-			productReference = 5FCAE2E11C7DEBFE00D36D0A /* Sparkler */;
+			productReference = 5FCAE2E11C7DEBFE00D36D0A /* sparkler */;
 			productType = "com.apple.product-type.tool";
 		};
 		5FCAE2EF1C7DED0400D36D0A /* Sparkling */ = {
@@ -176,7 +197,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5FCAE2E01C7DEBFE00D36D0A /* Sparkler */,
+				5FCAE2E01C7DEBFE00D36D0A /* sparkler */,
 				5FCAE2EF1C7DED0400D36D0A /* Sparkling */,
 			);
 		};
@@ -191,6 +212,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5FCAE3061C7E004800D36D0A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp $SRCROOT/Rome/";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5FCAE2DD1C7DEBFE00D36D0A /* Sources */ = {
@@ -302,6 +339,13 @@
 		5FCAE2E91C7DEBFE00D36D0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /usr/local/;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Rome",
+				);
+				INSTALL_PATH = /bin;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks $(CONFIGURATION_BUILD_DIR)";
 				OTHER_LDFLAGS = "-Wl,-rpath,@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -311,6 +355,13 @@
 		5FCAE2EA1C7DEBFE00D36D0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /usr/local/;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Rome",
+				);
+				INSTALL_PATH = /bin;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks $(CONFIGURATION_BUILD_DIR)";
 				OTHER_LDFLAGS = "-Wl,-rpath,@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -323,12 +374,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /usr/local;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Sparkling/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = /Frameworks;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.manuscriptsapp.Sparkling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -344,12 +397,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /usr/local;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Sparkling/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INSTALL_PATH = /Frameworks;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.manuscriptsapp.Sparkling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,13 +426,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FCAE2E81C7DEBFE00D36D0A /* Build configuration list for PBXNativeTarget "Sparkler" */ = {
+		5FCAE2E81C7DEBFE00D36D0A /* Build configuration list for PBXNativeTarget "sparkler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5FCAE2E91C7DEBFE00D36D0A /* Debug */,
 				5FCAE2EA1C7DEBFE00D36D0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FCAE2F51C7DED0400D36D0A /* Build configuration list for PBXNativeTarget "Sparkling" */ = {
 			isa = XCConfigurationList;
@@ -386,6 +442,7 @@
 				5FCAE2F71C7DED0400D36D0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
