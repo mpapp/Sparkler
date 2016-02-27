@@ -20,6 +20,9 @@
 		5FCAE33D1C7E280400D36D0A /* SparklerKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2F01C7DED0400D36D0A /* SparklerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5FCAE33E1C7E2CFB00D36D0A /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */; };
 		5FCAE33F1C7E2D0E00D36D0A /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */; };
+		5FCAE34F1C7E3A7C00D36D0A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAE34E1C7E3A7C00D36D0A /* Model.swift */; };
+		5FCAE3551C7E404300D36D0A /* SignatureVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAE3541C7E404300D36D0A /* SignatureVerifier.swift */; };
+		5FCAE3571C7E409A00D36D0A /* ShellCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAE3561C7E409A00D36D0A /* ShellCommand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,9 @@
 		5FCAE31A1C7E1D6F00D36D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5FCAE31C1C7E1D6F00D36D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FCAE3211C7E1D6F00D36D0A /* sparklerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sparklerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FCAE34E1C7E3A7C00D36D0A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Model.swift; path = SparklerKit/Model.swift; sourceTree = SOURCE_ROOT; };
+		5FCAE3541C7E404300D36D0A /* SignatureVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignatureVerifier.swift; path = SparklerKit/SignatureVerifier.swift; sourceTree = SOURCE_ROOT; };
+		5FCAE3561C7E409A00D36D0A /* ShellCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShellCommand.swift; path = SparklerKit/ShellCommand.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,9 @@
 			children = (
 				5FCAE2F21C7DED0400D36D0A /* SparklerKit.h */,
 				5FCAE2F41C7DED0400D36D0A /* Info.plist */,
+				5FCAE34E1C7E3A7C00D36D0A /* Model.swift */,
+				5FCAE3541C7E404300D36D0A /* SignatureVerifier.swift */,
+				5FCAE3561C7E409A00D36D0A /* ShellCommand.swift */,
 			);
 			name = SparklerKit;
 			path = Sparkling;
@@ -215,9 +224,7 @@
 				5FCAE3101C7E1D6E00D36D0A /* Frameworks */,
 				5FCAE3111C7E1D6E00D36D0A /* Resources */,
 				5FCAE33C1C7E27F100D36D0A /* Copy Frameworks */,
-				5FCAE3361C7E1DC100D36D0A /* Extract Commandline Tool */,
-				5FCAE3371C7E1E3C00D36D0A /* Copy Commandline Tool & SparklerKit */,
-				5FCAE33B1C7E237F00D36D0A /* Symlink commandline tool */,
+				5FCAE3361C7E1DC100D36D0A /* Extract, Install and Symlink Commandline Tool */,
 			);
 			buildRules = (
 			);
@@ -316,47 +323,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5FCAE3361C7E1DC100D36D0A /* Extract Commandline Tool */ = {
+		5FCAE3361C7E1DC100D36D0A /* Extract, Install and Symlink Commandline Tool */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Extract Commandline Tool";
+			name = "Extract, Install and Symlink Commandline Tool";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}\"\ncp -v \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}\"";
-		};
-		5FCAE3371C7E1E3C00D36D0A /* Copy Commandline Tool & SparklerKit */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Commandline Tool & SparklerKit";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"${DSTROOT}/bin\"\nmkdir -p \"${DSTROOT}/Frameworks\"\necho \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}\"\ncp -v \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}\" \"${DSTROOT}/bin/${EXECUTABLE_NAME}\"\n\nrm -rf \"${DSTROOT}/Frameworks\"\ncp -rv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/../Frameworks\" \"${DSTROOT}/Frameworks\"";
-		};
-		5FCAE33B1C7E237F00D36D0A /* Symlink commandline tool */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Symlink commandline tool";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "ln -fs \"${DSTROOT}/bin/${EXECUTABLE_NAME}\" \"/usr/local/bin/${EXECUTABLE_NAME}\"";
+			shellScript = "${SRCROOT}/Script/extract-commandline-tool.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -365,6 +344,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FCAE3571C7E409A00D36D0A /* ShellCommand.swift in Sources */,
+				5FCAE34F1C7E3A7C00D36D0A /* Model.swift in Sources */,
+				5FCAE3551C7E404300D36D0A /* SignatureVerifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +475,7 @@
 		5FCAE2F61C7DED0400D36D0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -505,6 +488,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Rome",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SparklerKit/Info.plist;
@@ -513,6 +497,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.manuscriptsapp.SparklerKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -521,6 +506,7 @@
 		5FCAE2F71C7DED0400D36D0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -533,6 +519,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Rome",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SparklerKit/Info.plist;
@@ -553,9 +540,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = /usr/local/sparkler/;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Rome",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = sparkler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../Frameworks/SparklerKit.framework/Versions/Current/Frameworks";
@@ -571,9 +560,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = /usr/local/sparkler/;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Rome",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = sparkler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../Frameworks/SparklerKit.framework/Versions/Current/Frameworks";
@@ -636,6 +627,7 @@
 				5FCAE32A1C7E1D6F00D36D0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FCAE32B1C7E1D6F00D36D0A /* Build configuration list for PBXNativeTarget "sparklerUITests" */ = {
 			isa = XCConfigurationList;
@@ -644,6 +636,7 @@
 				5FCAE32D1C7E1D6F00D36D0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
