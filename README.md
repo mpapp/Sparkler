@@ -1,0 +1,1 @@
+-sectcreate __TEXT __info_plist ${SRCROOT}/Sparkler/Info.plist

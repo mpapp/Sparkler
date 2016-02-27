@@ -8,20 +8,22 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
+import Freddy
+
+import Darwin
 
 enum UpdateServiceError: ErrorType {
     case MissingResultValue
     case MissingVersionMetadata(AnyObject)
 }
 
-struct UpdateService {
+public struct UpdateService {
     let baseURL:NSURL
     
     let app:String
     let feed:String
     
-    init(baseURL:NSURL, app:String, feed:String) {
+    public init(baseURL:NSURL, app:String, feed:String) {
         self.baseURL = baseURL
         self.app = app
         self.feed = feed
@@ -32,46 +34,19 @@ struct UpdateService {
         }
     }
     
-    func listVersions(errorHandler:(ErrorType)->Void, versionsHandler:([Version])->Void) {
-        Alamofire.request(.GET, self.versionsURL).responseJSON { (response:Response<AnyObject, NSError>) -> Void in
-            if let error = response.result.error {
-                errorHandler(error)
-                return
-            }
-            
-            guard let json = response.result.value else {
-                errorHandler(UpdateServiceError.MissingResultValue)
-                return
-            }
-            
-            let versionsJSON = JSON(json)
-            
-            do {
-                let versions:[Version] = try versionsJSON.map { _ in
-                    
-                    guard let downloadURL:NSURL = versionsJSON["downloadURL"].URL,
-                          let version:String = versionsJSON["version"].string,
-                          let shortVersion:String = versionsJSON["shortVersion"].string,
-                          let signature:String = versionsJSON["signature"].string,
-                          let length:UInt = versionsJSON["length"].number?.unsignedIntegerValue else {
-                        throw UpdateServiceError.MissingVersionMetadata(json)
-                    }
-                    
-                    return Version(localURL:nil,
-                                    downloadURL:downloadURL,
-                                    version:version,
-                                    shortVersion:shortVersion,
-                                    signature:signature,
-                                    length:length)
-                }
-                
-                versionsHandler(versions)
-            }
-            catch UpdateServiceError.MissingVersionMetadata(let obj) {
-                errorHandler(UpdateServiceError.MissingVersionMetadata(obj))
-                return
-            }
-            catch { fatalError("Only expected error is UpdateServiceError.MissingVersionMetadata") }
-        }
+    public func listVersions() throws -> [Version] {
+        fputs("Listing versions at \(self.versionsURL)\n", __stderrp)
+        
+        let req = NSMutableURLRequest(URL: self.versionsURL)
+        req.setValue("application/json", forHTTPHeaderField: "Accepts")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let response:AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
+        let responseData = try NSURLConnection.sendSynchronousRequest(req, returningResponse: response)
+        
+        let versions:[Version] = try JSON(data:responseData).array().map(Version.init)
+        
+        //print(versions)
+        return versions
     }
 }
