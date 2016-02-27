@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5FCAE2F31C7DED0400D36D0A /* SparklerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCAE2F21C7DED0400D36D0A /* SparklerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F6601751C820ECB003B2FA5 /* SparklerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F6601741C820ECB003B2FA5 /* SparklerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F6601791C82192F003B2FA5 /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6601781C82192F003B2FA5 /* UpdateService.swift */; };
+		5F66017B1C8222F7003B2FA5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */; };
+		5F66017C1C822300003B2FA5 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5FCAE3181C7E1D6E00D36D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAE3171C7E1D6E00D36D0A /* Assets.xcassets */; };
 		5FCAE31B1C7E1D6F00D36D0A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAE3191C7E1D6F00D36D0A /* MainMenu.xib */; };
 		5FCAE32F1C7E1D8D00D36D0A /* Commander.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -49,6 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5F66017C1C822300003B2FA5 /* SwiftyJSON.framework in Copy Frameworks */,
 				5FCAE32F1C7E1D8D00D36D0A /* Commander.framework in Copy Frameworks */,
 				5FCAE3311C7E1D8D00D36D0A /* Alamofire.framework in Copy Frameworks */,
 				5FCAE3321C7E1D8D00D36D0A /* AmazonS3RequestManager.framework in Copy Frameworks */,
@@ -71,10 +75,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F6601721C820E2D003B2FA5 /* SparklerKit.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = SparklerKit.modulemap; path = SparklerKit/SparklerKit.modulemap; sourceTree = SOURCE_ROOT; };
+		5F6601741C820ECB003B2FA5 /* SparklerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparklerKit.h; path = SparklerKit/SparklerKit.h; sourceTree = SOURCE_ROOT; };
+		5F6601761C82109B003B2FA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F6601781C82192F003B2FA5 /* UpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
+		5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Rome/SwiftyJSON.framework; sourceTree = "<group>"; };
 		5FCAE2E41C7DEBFE00D36D0A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5FCAE2F01C7DED0400D36D0A /* SparklerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SparklerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FCAE2F21C7DED0400D36D0A /* SparklerKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SparklerKit.h; path = ../SparklerKit/SparklerKit.h; sourceTree = "<group>"; };
-		5FCAE2F41C7DED0400D36D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../SparklerKit/Info.plist; sourceTree = "<group>"; };
 		5FCAE2FD1C7DFF4500D36D0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Rome/Alamofire.framework; sourceTree = "<group>"; };
 		5FCAE2FE1C7DFF4500D36D0A /* AmazonS3RequestManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AmazonS3RequestManager.framework; path = Rome/AmazonS3RequestManager.framework; sourceTree = "<group>"; };
 		5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Rome/SWXMLHash.framework; sourceTree = "<group>"; };
@@ -97,6 +104,7 @@
 			files = (
 				5FCAE3341C7E1D9500D36D0A /* Foundation.framework in Frameworks */,
 				5FCAE33F1C7E2D0E00D36D0A /* Commander.framework in Frameworks */,
+				5F66017B1C8222F7003B2FA5 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,19 +159,21 @@
 		5FCAE2F11C7DED0400D36D0A /* SparklerKit */ = {
 			isa = PBXGroup;
 			children = (
-				5FCAE2F21C7DED0400D36D0A /* SparklerKit.h */,
-				5FCAE2F41C7DED0400D36D0A /* Info.plist */,
+				5F6601761C82109B003B2FA5 /* Info.plist */,
+				5F6601741C820ECB003B2FA5 /* SparklerKit.h */,
 				5FCAE34E1C7E3A7C00D36D0A /* Model.swift */,
 				5FCAE3541C7E404300D36D0A /* SignatureVerifier.swift */,
 				5FCAE3561C7E409A00D36D0A /* ShellCommand.swift */,
+				5F6601721C820E2D003B2FA5 /* SparklerKit.modulemap */,
+				5F6601781C82192F003B2FA5 /* UpdateService.swift */,
 			);
-			name = SparklerKit;
-			path = Sparkling;
+			path = SparklerKit;
 			sourceTree = "<group>";
 		};
 		5FCAE3031C7DFF4700D36D0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */,
 				5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */,
 				5FCAE30B1C7E15DD00D36D0A /* Foundation.framework */,
 				5FCAE2FD1C7DFF4500D36D0A /* Alamofire.framework */,
@@ -190,7 +200,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FCAE2F31C7DED0400D36D0A /* SparklerKit.h in Headers */,
+				5F6601751C820ECB003B2FA5 /* SparklerKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +222,7 @@
 			dependencies = (
 			);
 			name = SparklerKit;
-			productName = Sparkling;
+			productName = SparklerKit;
 			productReference = 5FCAE2F01C7DED0400D36D0A /* SparklerKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -346,6 +356,7 @@
 			files = (
 				5FCAE3571C7E409A00D36D0A /* ShellCommand.swift in Sources */,
 				5FCAE34F1C7E3A7C00D36D0A /* Model.swift in Sources */,
+				5F6601791C82192F003B2FA5 /* UpdateService.swift in Sources */,
 				5FCAE3551C7E404300D36D0A /* SignatureVerifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +505,7 @@
 				INFOPLIST_FILE = SparklerKit/Info.plist;
 				INSTALL_PATH = /Frameworks;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = SparklerKit/SparklerKit.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.manuscriptsapp.SparklerKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -525,6 +537,7 @@
 				INFOPLIST_FILE = SparklerKit/Info.plist;
 				INSTALL_PATH = /Frameworks;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = SparklerKit/SparklerKit.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.manuscriptsapp.SparklerKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -548,6 +561,12 @@
 				);
 				INFOPLIST_FILE = sparkler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../Frameworks/SparklerKit.framework/Versions/Current/Frameworks";
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"${SRCROOT}/Sparkler/Info.plist",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.manuscriptsapp.sparkler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -568,6 +587,12 @@
 				);
 				INFOPLIST_FILE = sparkler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../Frameworks/SparklerKit.framework/Versions/Current/Frameworks";
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"${SRCROOT}/Sparkler/Info.plist",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.manuscriptsapp.sparkler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

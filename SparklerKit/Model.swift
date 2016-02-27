@@ -7,6 +7,12 @@
 //
 
 import Foundation
+import Darwin
+
+enum VersionError : ErrorType {
+    case BadPrivateKeyPath
+    case PrivateKeyMissing(String)
+}
 
 struct Delta {
     let url:String
@@ -19,8 +25,8 @@ struct Delta {
     let toVersionSignature:String
 }
 
-struct Version {
-    let localURL:NSURL
+public struct Version {
+    var localURL:NSURL?
     var downloadURL:NSURL?
     
     let version:String
@@ -28,7 +34,16 @@ struct Version {
     let signature:String
     let length:UInt
     
-    static func listVersionsAtDirectoryURL(directoryURL:NSURL, privateKeyURL:NSURL) throws -> [Version] {
+    public static func listVersionsAtDirectoryURL(directoryURL:NSURL, signUpdateURL:NSURL, privateKeyURL:NSURL) throws -> [Version] {
+        
+        guard let privateKeyPath = privateKeyURL.path else {
+            throw VersionError.BadPrivateKeyPath
+        }
+        
+        guard NSFileManager.defaultManager().fileExistsAtPath(privateKeyPath) else {
+            throw VersionError.PrivateKeyMissing(privateKeyPath)
+        }
+        
         let files = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(directoryURL, includingPropertiesForKeys: [NSFileSize], options: .SkipsSubdirectoryDescendants)
         
         return try files.flatMap {
@@ -43,9 +58,14 @@ struct Version {
             
             let attribs = try NSFileManager.defaultManager().attributesOfItemAtPath(path)
             let size = (attribs[NSFileSize] as! NSNumber).unsignedIntegerValue
-            let signature = try SignatureVerifier(privateKeyPath: privateKeyURL.path!).DSASignature(path)
             
-            return Version(localURL: $0, downloadURL: nil, version: version, shortVersion: shortVersion, signature: signature, length: size)
+            let signature = try SignatureVerifier(signUpdatePath: signUpdateURL.path!, privateKeyPath: privateKeyURL.path!).DSASignature(path)
+            
+            let v = Version(localURL: $0, downloadURL: nil, version: version, shortVersion: shortVersion, signature: signature, length: size)
+            
+            fputs("Version: \(v)\n", __stderrp)
+            
+            return v
         }
     }
 }

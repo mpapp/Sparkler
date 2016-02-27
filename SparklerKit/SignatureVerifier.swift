@@ -8,15 +8,25 @@
 
 import Foundation
 
+enum SignatureVerifierError: ErrorType {
+    case BadSignUpdatePath(String)
+}
+
 struct SignatureVerifier {
     
+    let signUpdatePath:String
     let privateKeyPath:String
     
-    init(privateKeyPath:String) {
+    init(signUpdatePath:String, privateKeyPath:String) throws {
+        if !NSFileManager.defaultManager().fileExistsAtPath(signUpdatePath) {
+            throw SignatureVerifierError.BadSignUpdatePath(signUpdatePath)
+        }
+        
+        self.signUpdatePath = signUpdatePath
         self.privateKeyPath = privateKeyPath
     }
     
     func DSASignature(path:String) throws -> String {
-        return try executeTask("./sign_update", arguments: [path, privateKeyPath])
+        return try executeTask(self.signUpdatePath, arguments: [path, privateKeyPath])
     }
 }

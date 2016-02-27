@@ -1,0 +1,6 @@
+framework module SparklerKit {
+    umbrella header "SparklerKit.h"
+    
+    export *
+    module * { export * }
+}

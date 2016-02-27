@@ -4,4 +4,5 @@ pod 'AmazonS3RequestManager'
 pod 'Commander'
 pod 'Nimble'
 pod 'Quick'
+pod 'SwiftyJSON'
 
