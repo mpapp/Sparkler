@@ -10,9 +10,9 @@
 		5F06C30B1C82319400D9B202 /* Commander.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F06C30D1C8262B200D9B202 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06C30C1C8262B200D9B202 /* Freddy.framework */; };
 		5F06C30E1C8262B900D9B202 /* Freddy.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06C30C1C8262B200D9B202 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F06C30F1C83082E00D9B202 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */; };
 		5F6601751C820ECB003B2FA5 /* SparklerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F6601741C820ECB003B2FA5 /* SparklerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F6601791C82192F003B2FA5 /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6601781C82192F003B2FA5 /* UpdateService.swift */; };
-		5F66017B1C8222F7003B2FA5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */; };
 		5F66017C1C822300003B2FA5 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F9B19861C822C2800FF1E85 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B19851C822C2800FF1E85 /* README.md */; };
 		5FCAE3181C7E1D6E00D36D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAE3171C7E1D6E00D36D0A /* Assets.xcassets */; };
@@ -113,7 +113,7 @@
 				5FCAE3341C7E1D9500D36D0A /* Foundation.framework in Frameworks */,
 				5FCAE33F1C7E2D0E00D36D0A /* Commander.framework in Frameworks */,
 				5F06C30D1C8262B200D9B202 /* Freddy.framework in Frameworks */,
-				5F66017B1C8222F7003B2FA5 /* SwiftyJSON.framework in Frameworks */,
+				5F06C30F1C83082E00D9B202 /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

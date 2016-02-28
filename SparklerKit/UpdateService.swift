@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import Freddy
+import SWXMLHash
 
 import Darwin
 
@@ -26,6 +27,10 @@ public struct UpdateService {
     
     let username:String
     let password:String
+    
+    public init(baseURL:NSURL, app:String, feed:String) {
+        self.init(baseURL:baseURL, app:app, feed:feed, username:"", password:"")
+    }
     
     public init(baseURL:NSURL, app:String, feed:String, username:String, password:String) {
         self.baseURL = baseURL
@@ -61,6 +66,10 @@ public struct UpdateService {
     }
     
     private func ensureBasicAuthenticationHeaders(req:NSMutableURLRequest) throws -> Void {
+        if self.username.utf8.count == 0 || self.password.utf8.count == 0 {
+            throw UpdateServiceError.BadAuthenticationCredentials
+        }
+        
         let loginString = "\(self.username):\(self.password)"
         guard let loginData = loginString.dataUsingEncoding(NSUTF8StringEncoding) else {
             throw UpdateServiceError.BadAuthenticationCredentials
@@ -88,13 +97,43 @@ public struct UpdateService {
         // doing it this way because NSURLConnection.sendSynchronousRequest seems to have issues in Swift accepting the response…
         do {
             let responseJSON = try JSON(data:responseData)
-            let version = try Version(json: responseJSON)
-            print(version)
+            _ = try Version(json: responseJSON)
             return true
         }
         catch let e {
             fputs("Error occurred: \(e)", __stderrp)
             return false
+        }
+    }
+    
+    var appcastURL:NSURL { get {
+            return self.baseURL
+                    .URLByAppendingPathComponent("apps")
+                        .URLByAppendingPathComponent(self.app)
+                            .URLByAppendingPathComponent(self.feed)
+                                .URLByAppendingPathComponent("appcast.xml")
+        }
+    }
+    
+    public func appcastVersions() throws -> [Version] {
+        let req = NSMutableURLRequest(URL: self.appcastURL)
+        req.setValue("application/json", forHTTPHeaderField: "Accepts")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let response:AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
+        let responseData = try NSURLConnection.sendSynchronousRequest(req, returningResponse: response)
+        
+        let xml = SWXMLHash.parse(responseData)
+        
+        return xml["rss"]["channel"]["item"].map {
+            let enclosure = $0["enclosure"].element!
+            let url:String = enclosure.attributes["url"]!
+            
+            return Version(localURL: nil, downloadURL: NSURL(string:url),
+                version: enclosure.attributes["sparkle:version"]!,
+                shortVersion: enclosure.attributes["sparkle:shortVersionString"]!,
+                signature: enclosure.attributes["sparkle:dsaSignature"]!,
+                length: UInt(enclosure.attributes["length"]!)!)
         }
     }
 }

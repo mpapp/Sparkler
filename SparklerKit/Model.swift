@@ -100,7 +100,7 @@ public class VersionGenerator : GeneratorType {
             let attribs = try NSFileManager.defaultManager().attributesOfItemAtPath(path)
             let size = (attribs[NSFileSize] as! NSNumber).unsignedIntegerValue
 
-            let signature = try SignatureVerifier(signUpdatePath: signUpdateURL.path!, privateKeyPath: privateKeyURL.path!).DSASignature(path)
+            let signature = try SignatureVerifier(signUpdatePath: signUpdateURL.path!, privateKeyPath: privateKeyURL.path!, publicKeyPath: "").DSASignature(path)
             
             let v = Version(localURL: fileURL, downloadURL: nil, version: version, shortVersion: shortVersion, signature: signature, length: size)
 

@@ -16,6 +16,7 @@ import Darwin
 
 enum SparklerError : ErrorType {
     case VersionListingFailed
+    case MissingVersion(NSURL)
 }
 
 Group {
@@ -38,6 +39,47 @@ Group {
         
             
         
+    }
+    
+    $0.command("verify-appcast",
+        Argument<String>("updateBaseURL", description:"Update service base URL."),
+        Argument<String>("publicKey", description:"DSA public key path."),
+        Option("working-directory", "../Updates/Builds", description:"Path to a working directory where updates downloaded from the appcast are stored."),
+        Option("app", "manuscripts", description:"App name"),
+        Option("feed", "alpha", description:"Feed name"))
+        { updateBaseURLString, publicKey, workingDir, app, feed in
+            
+            let updateBaseURL = NSURL(string: updateBaseURLString)!
+            let publicKeyURL = NSURL(fileURLWithPath: publicKey)
+            
+            let verifier = try SignatureVerifier(publicKeyPath:publicKey)
+            
+            let workingDirURL = NSURL(fileURLWithPath: workingDir)
+            
+            let updateService = UpdateService(baseURL: updateBaseURL, app: app, feed: feed)
+            let appcastVersions = try updateService.appcastVersions()
+            
+            fputs("Verifying \(appcastVersions.count) versions…\n", __stderrp)
+            for version in appcastVersions {
+                fputs("Verifying \(version.version)…\n", __stderrp)
+                let localURL = workingDirURL.URLByAppendingPathComponent(version.version).URLByAppendingPathExtension("zip")
+                let localPath = localURL.path!
+                if !NSFileManager.defaultManager().fileExistsAtPath(localURL.path!) {
+                    throw SparklerError.MissingVersion(localURL)
+                }
+                
+                let success = try verifier.verifyDSASignature(localPath, signature: version.signature)
+                if !success {
+                    fputs("Verification failed for \(version.version)", __stderrp)
+                    exit(-2)
+                }
+                
+                let attribs = try NSFileManager.defaultManager().attributesOfItemAtPath(localPath)
+                guard let size = attribs[NSFileSize], sizeInt = size.integerValue else {
+                    fputs("File size determination failed for \(localPath)", __stderrp)
+                    exit(-3)
+                }
+            }
     }
     
     $0.command("verify",

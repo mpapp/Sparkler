@@ -13,8 +13,7 @@ enum ShellCommandError:ErrorType {
 }
 
 // http://stackoverflow.com/questions/26971240/how-do-i-run-an-terminal-command-in-a-swift-script-e-g-xcodebuild
-func executeTask(launchPath: String, arguments: [String]) throws -> String
-{
+func executeTask(launchPath: String, arguments: [String]) throws -> String {
     let task = NSTask()
     task.launchPath = launchPath
     task.arguments = arguments
@@ -36,3 +35,21 @@ func executeTask(launchPath: String, arguments: [String]) throws -> String
     return output
 }
 
+func executeTask(launchPath: String, arguments: [String]) throws -> NSData {
+    let task = NSTask()
+    task.launchPath = launchPath
+    task.arguments = arguments
+    
+    let pipe = NSPipe()
+    task.standardOutput = pipe
+    task.launch()
+    
+    task.waitUntilExit()
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    
+    if task.terminationStatus != 0 {
+        throw ShellCommandError.NonzeroTerminationStatus
+    }
+    
+    return data
+}
