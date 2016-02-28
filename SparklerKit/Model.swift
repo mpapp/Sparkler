@@ -15,7 +15,7 @@ enum VersionError : ErrorType {
     case PrivateKeyMissing(String)
 }
 
-struct Delta: JSONDecodable {
+struct Delta: JSONDecodable, JSONEncodable {
     let url:String
     let identifier:String
     let fromVersion:String
@@ -34,6 +34,17 @@ struct Delta: JSONDecodable {
         self.length = UInt(try json.int("length"))
         self.fromVersionSignature = try json.string("fromVersionSignature")
         self.toVersionSignature = try json.string("toVersionSignature")
+    }
+    
+    func toJSON() -> JSON {
+        return .Dictionary(["url": .String(self.url),
+                            "identifier": .String(self.identifier),
+                            "fromVersion": .String(self.fromVersion),
+                            "toVersion": .String(self.toVersion),
+                            "signature": .String(self.signature),
+                            "length": .Int(Int(self.length)),
+                            "fromVersionSignature": .String(self.fromVersionSignature),
+                            "toVersionSignature": .String(self.toVersionSignature)])
     }
 }
 
@@ -103,7 +114,7 @@ public class VersionGenerator : GeneratorType {
     }
 }
 
-public struct Version: CustomStringConvertible, JSONDecodable {
+public struct Version: CustomStringConvertible, JSONDecodable, JSONEncodable {
     public var localURL:NSURL?
     public var downloadURL:NSURL?
     
@@ -127,6 +138,18 @@ public struct Version: CustomStringConvertible, JSONDecodable {
         self.shortVersion = try json.string("shortVersion")
         self.signature = try json.string("signature")
         self.length = UInt(try json.int("length"))
+    }
+    
+    public func toJSON() -> JSON {
+        guard let downloadURL = self.downloadURL else {
+            fatalError("Attempting to JSON serialize version with no download URL: \(self)")
+        }
+        
+        return .Dictionary(["url":.String(downloadURL.absoluteString),
+                            "version":.String(self.version),
+                            "shortVersion":.String(self.shortVersion),
+                            "signature":.String(self.signature),
+                            "length":.Int(Int(self.length))])
     }
     
     public static func listVersionsAtDirectoryURL(directoryURL:NSURL, signUpdateURL:NSURL, privateKeyURL:NSURL) throws -> VersionSequence {

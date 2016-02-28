@@ -41,15 +41,16 @@ Group {
     }
     
     $0.command("verify",
-        //Argument<String>("appcast", description:"Path to the appcast whose entries we are to verify."),
         Argument<String>("updateBaseURL", description:"Update service base URL."),
+        Argument<String>("username", description:"Update service username."),
+        Argument<String>("password", description:"Update service password."),
         Option("dsa", "./dsa_priv.pem", description:"Path to DSA private key for the updates."),
         Option("app", "manuscripts", description:"App name"),
         Option("feed", "alpha", description:"Feed name"),
         Flag("repair-size", description:"Repair size field for update versions."),
         Option("sign-update", "../External/Sparkle/bin/sign_update", description:"Path to Sparkle's sign_update"),
         Option("working-directory", "../Updates/Builds", description:"Path to a working directory where updates downloaded from the appcast are stored."))
-        { updateBaseURLString, dsa, app, feed, repairSizes, signUpdate, workingDir in
+        { updateBaseURLString, username, password, dsa, app, feed, repairSizes, signUpdate, workingDir in
             
             let dsaURL = NSURL(fileURLWithPath:dsa)
             let workingDirURL = NSURL(fileURLWithPath:workingDir)
@@ -57,7 +58,7 @@ Group {
             
             let updateBaseURL = NSURL(string: updateBaseURLString)!
             
-            let updateService = UpdateService(baseURL: updateBaseURL, app: app, feed: feed)
+            let updateService = UpdateService(baseURL: updateBaseURL, app: app, feed: feed, username:username, password:password)
             
             fputs("Getting versions from \(updateBaseURL)\n", __stderrp)
             
@@ -76,10 +77,11 @@ Group {
 
                 let lengthMatch = matchingVersion.length == version.length
                 if !lengthMatch {
-                    print("Length mismatch for version \(version): \(matchingVersion.length) !== \(version.length)", __stderrp)
+                    print("Length mismatch for version \(version.version): \(matchingVersion.length) !== \(version.length).")
                     
                     if repairSizes {
                         matchingVersion.length = version.length
+                        try updateService.update(version:matchingVersion)
                     }
                 }
             }
