@@ -125,15 +125,42 @@ public struct UpdateService {
         
         let xml = SWXMLHash.parse(responseData)
         
-        return xml["rss"]["channel"]["item"].map {
+        let versions:[Version] = xml["rss"]["channel"]["item"].map {
             let enclosure = $0["enclosure"].element!
             let url:String = enclosure.attributes["url"]!
             
-            return Version(localURL: nil, downloadURL: NSURL(string:url),
-                version: enclosure.attributes["sparkle:version"]!,
-                shortVersion: enclosure.attributes["sparkle:shortVersionString"]!,
-                signature: enclosure.attributes["sparkle:dsaSignature"]!,
-                length: UInt(enclosure.attributes["length"]!)!)
+            var version = Version(localURL: nil, downloadURL: NSURL(string:url),
+                                  version: enclosure.attributes["sparkle:version"]!,
+                                  shortVersion: enclosure.attributes["sparkle:shortVersionString"]!,
+                                  signature: enclosure.attributes["sparkle:dsaSignature"]!,
+                                  length: UInt(enclosure.attributes["length"]!)!)
+            
+            version.deltas = $0["sparkle:deltas"]["enclosure"].map { (let deltaItem:XMLIndexer) -> Delta in
+                let deltaElem = deltaItem.element!
+                let url:String = deltaElem.attributes["url"]!
+                
+                let fromVersion = deltaElem.attributes["sparkle:deltaFrom"]!
+                let version = deltaElem.attributes["sparkle:version"]!
+                let signature = deltaElem.attributes["sparkle:dsaSignature"]!
+                let length = UInt(deltaElem.attributes["length"]!)!
+                
+                let delta = Delta(url: url,
+                                  identifier: "\(fromVersion)--\(version)",
+                                  fromVersion: fromVersion,
+                                  toVersion: version,
+                                  signature: signature,
+                                  length: length,
+                                  fromVersionSignature: nil,
+                                  toVersionSignature: nil)
+                
+                return delta
+            }
+            
+            return version
         }
+        
+        
+        
+        return versions
     }
 }

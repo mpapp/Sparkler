@@ -67,6 +67,12 @@ public struct SignatureVerifier {
         try NSFileManager.defaultManager().removeItemAtURL(binaryDigestURL)
         try NSFileManager.defaultManager().removeItemAtURL(signatureURL)
         
-        return signatureCheckResult == "Verified OK"
+        let success = signatureCheckResult == "Verified OK"
+        
+        if !success {
+            fputs("Signature check result: \(signatureCheckResult)\n", __stderrp)
+        }
+        
+        return success
     }
 }

@@ -57,30 +57,62 @@ Group {
             let workingDirURL = NSURL(fileURLWithPath: workingDir)
             
             let updateService = UpdateService(baseURL: updateBaseURL, app: app, feed: feed)
+            
+            fputs("Verifying appcast…\n", __stderrp)
             let appcastVersions = try updateService.appcastVersions()
             
             fputs("Verifying \(appcastVersions.count) versions…\n", __stderrp)
             for version in appcastVersions {
                 fputs("Verifying \(version.version)…\n", __stderrp)
+                
                 let localURL = workingDirURL.URLByAppendingPathComponent(version.version).URLByAppendingPathExtension("zip")
                 let localPath = localURL.path!
                 if !NSFileManager.defaultManager().fileExistsAtPath(localURL.path!) {
                     throw SparklerError.MissingVersion(localURL)
                 }
                 
-                let success = try verifier.verifyDSASignature(localPath, signature: version.signature)
-                if !success {
-                    fputs("Verification failed for \(version.version)", __stderrp)
-                    exit(-2)
+                let verifies = try verifier.verifyDSASignature(localPath, signature: version.signature)
+                if !verifies {
+                    fputs("Verification failed for \(version.version): \(localPath)\n", __stderrp)
+                    continue
+                    //exit(-2)
                 }
                 
                 let attribs = try NSFileManager.defaultManager().attributesOfItemAtPath(localPath)
-                guard let size = attribs[NSFileSize], sizeInt = size.integerValue else {
+                guard let size = attribs[NSFileSize], sizeInt = size.unsignedIntegerValue else {
                     fputs("File size determination failed for \(localPath)", __stderrp)
                     exit(-3)
                 }
+                
+                if sizeInt != version.length {
+                    fputs("Unexpected size for \(version.version)", __stderrp)
+                    exit(-4)
+                }
+                
+                for delta in version.deltas {
+                    fputs("Verifying delta from \(delta.fromVersion) to \(delta.toVersion)\n", __stderrp)
+                    
+                    let localDeltaURL = workingDirURL.URLByAppendingPathComponent("\(delta.fromVersion)--\(delta.toVersion).delta")
+                    let localDeltaPath = localDeltaURL.path!
+                    if !NSFileManager.defaultManager().fileExistsAtPath(localDeltaURL.path!) {
+                        throw SparklerError.MissingVersion(localDeltaURL)
+                    }
+                    
+                    let deltaVerifies = try verifier.verifyDSASignature(localDeltaPath, signature: delta.signature)
+                    
+                    if !deltaVerifies {
+                        fputs("Delta from \(delta.fromVersion) to \(delta.toVersion) fails signature verification: \(localDeltaPath)", __stderrp)
+                        exit(-5)
+                    }
+                    
+                    let deltaAttribs = try NSFileManager.defaultManager().attributesOfItemAtPath(localDeltaPath)
+                    guard let size = deltaAttribs[NSFileSize], sizeInt = size.integerValue else {
+                        fputs("File size determination filed for \(localDeltaPath)", __stderrp)
+                        exit(-6)
+                    }
+                }
             }
-    }
+        }
     
     $0.command("verify",
         Argument<String>("updateBaseURL", description:"Update service base URL."),

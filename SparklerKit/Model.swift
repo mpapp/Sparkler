@@ -15,17 +15,35 @@ enum VersionError : ErrorType {
     case PrivateKeyMissing(String)
 }
 
-struct Delta: JSONDecodable, JSONEncodable {
-    let url:String
-    let identifier:String
-    let fromVersion:String
-    let toVersion:String
-    let signature:String
-    let length:UInt
-    let fromVersionSignature:String
-    let toVersionSignature:String
+public struct Delta: JSONDecodable, JSONEncodable {
+    public let url:String
+    public let identifier:String
+    public let fromVersion:String
+    public let toVersion:String
+    public let signature:String
+    public let length:UInt
+    public var fromVersionSignature:String?
+    public var toVersionSignature:String?
     
-    init(json: JSON) throws {
+    public init(url:String,
+                identifier:String,
+                fromVersion:String,
+                toVersion:String,
+                signature:String,
+                length:UInt,
+                fromVersionSignature:String?,
+                toVersionSignature:String?) {
+        self.url = url
+        self.identifier = identifier
+        self.fromVersion = fromVersion
+        self.toVersion = toVersion
+        self.signature = signature
+        self.length = length
+        self.fromVersionSignature = fromVersionSignature
+        self.toVersionSignature = toVersionSignature
+    }
+    
+    public init(json: JSON) throws {
         self.url = try json.string("url")
         self.identifier = try json.string("identifier")
         self.fromVersion = try json.string("fromVersion")
@@ -36,15 +54,22 @@ struct Delta: JSONDecodable, JSONEncodable {
         self.toVersionSignature = try json.string("toVersionSignature")
     }
     
-    func toJSON() -> JSON {
+    public func toJSON() -> JSON {
+        guard let fromVersionSignature = self.fromVersionSignature else {
+            fatalError("Missing fromVersionSignature")
+        }
+        guard let toVersionSignature = self.toVersionSignature else {
+            fatalError("Missing toVersionSignature")
+        }
+        
         return .Dictionary(["url": .String(self.url),
                             "identifier": .String(self.identifier),
                             "fromVersion": .String(self.fromVersion),
                             "toVersion": .String(self.toVersion),
                             "signature": .String(self.signature),
                             "length": .Int(Int(self.length)),
-                            "fromVersionSignature": .String(self.fromVersionSignature),
-                            "toVersionSignature": .String(self.toVersionSignature)])
+                            "fromVersionSignature": .String(fromVersionSignature),
+                            "toVersionSignature": .String(toVersionSignature)])
     }
 }
 
@@ -123,6 +148,8 @@ public struct Version: CustomStringConvertible, JSONDecodable, JSONEncodable {
     public let signature:String
     public var length:UInt
    
+    public var deltas:[Delta]
+    
     public init(localURL:NSURL?, downloadURL:NSURL?, version:String, shortVersion:String, signature:String, length:UInt) {
         self.localURL = localURL
         self.downloadURL = downloadURL
@@ -130,6 +157,8 @@ public struct Version: CustomStringConvertible, JSONDecodable, JSONEncodable {
         self.shortVersion = shortVersion
         self.signature = signature
         self.length = length
+        
+        self.deltas = []
     }
     
     public init(json: JSON) throws {
@@ -138,6 +167,8 @@ public struct Version: CustomStringConvertible, JSONDecodable, JSONEncodable {
         self.shortVersion = try json.string("shortVersion")
         self.signature = try json.string("signature")
         self.length = UInt(try json.int("length"))
+        
+        self.deltas = try json.array("deltas").map(Delta.init)
     }
     
     public func toJSON() -> JSON {
