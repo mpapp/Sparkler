@@ -7,26 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F06C30B1C82319400D9B202 /* Commander.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F06C30D1C8262B200D9B202 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06C30C1C8262B200D9B202 /* Freddy.framework */; };
-		5F06C30E1C8262B900D9B202 /* Freddy.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F06C30C1C8262B200D9B202 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5F06C30F1C83082E00D9B202 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */; };
+		5F41632F1D0D86290017A57C /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F41632C1D0D86290017A57C /* Commander.framework */; };
+		5F4163301D0D86290017A57C /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F41632D1D0D86290017A57C /* Freddy.framework */; };
+		5F4163311D0D86290017A57C /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F41632E1D0D86290017A57C /* SWXMLHash.framework */; };
+		5F4163321D0D862C0017A57C /* Commander.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F41632C1D0D86290017A57C /* Commander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F4163331D0D862C0017A57C /* Freddy.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F41632D1D0D86290017A57C /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F4163341D0D862C0017A57C /* SWXMLHash.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F41632E1D0D86290017A57C /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F6601751C820ECB003B2FA5 /* SparklerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F6601741C820ECB003B2FA5 /* SparklerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F6601791C82192F003B2FA5 /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6601781C82192F003B2FA5 /* UpdateService.swift */; };
-		5F66017C1C822300003B2FA5 /* SwiftyJSON.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F9B19861C822C2800FF1E85 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B19851C822C2800FF1E85 /* README.md */; };
 		5FCAE3181C7E1D6E00D36D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAE3171C7E1D6E00D36D0A /* Assets.xcassets */; };
 		5FCAE31B1C7E1D6F00D36D0A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCAE3191C7E1D6F00D36D0A /* MainMenu.xib */; };
-		5FCAE32F1C7E1D8D00D36D0A /* Commander.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5FCAE3311C7E1D8D00D36D0A /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2FD1C7DFF4500D36D0A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5FCAE3321C7E1D8D00D36D0A /* AmazonS3RequestManager.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2FE1C7DFF4500D36D0A /* AmazonS3RequestManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5FCAE3331C7E1D8D00D36D0A /* SWXMLHash.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5FCAE3341C7E1D9500D36D0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30B1C7E15DD00D36D0A /* Foundation.framework */; };
 		5FCAE3351C7E1DBB00D36D0A /* SparklerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2F01C7DED0400D36D0A /* SparklerKit.framework */; };
 		5FCAE33A1C7E21D600D36D0A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAE2E41C7DEBFE00D36D0A /* main.swift */; };
 		5FCAE33D1C7E280400D36D0A /* SparklerKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE2F01C7DED0400D36D0A /* SparklerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5FCAE33E1C7E2CFB00D36D0A /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */; };
-		5FCAE33F1C7E2D0E00D36D0A /* Commander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */; };
 		5FCAE34F1C7E3A7C00D36D0A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAE34E1C7E3A7C00D36D0A /* Model.swift */; };
 		5FCAE3551C7E404300D36D0A /* SignatureVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAE3541C7E404300D36D0A /* SignatureVerifier.swift */; };
 		5FCAE3571C7E409A00D36D0A /* ShellCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAE3561C7E409A00D36D0A /* ShellCommand.swift */; };
@@ -56,12 +51,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5F06C30E1C8262B900D9B202 /* Freddy.framework in Copy Frameworks */,
-				5F66017C1C822300003B2FA5 /* SwiftyJSON.framework in Copy Frameworks */,
-				5FCAE32F1C7E1D8D00D36D0A /* Commander.framework in Copy Frameworks */,
-				5FCAE3311C7E1D8D00D36D0A /* Alamofire.framework in Copy Frameworks */,
-				5FCAE3321C7E1D8D00D36D0A /* AmazonS3RequestManager.framework in Copy Frameworks */,
-				5FCAE3331C7E1D8D00D36D0A /* SWXMLHash.framework in Copy Frameworks */,
+				5F4163321D0D862C0017A57C /* Commander.framework in Copy Frameworks */,
+				5F4163331D0D862C0017A57C /* Freddy.framework in Copy Frameworks */,
+				5F4163341D0D862C0017A57C /* SWXMLHash.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +65,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5FCAE33D1C7E280400D36D0A /* SparklerKit.framework in Copy Frameworks */,
-				5F06C30B1C82319400D9B202 /* Commander.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,20 +72,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5F06C30C1C8262B200D9B202 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Rome/Freddy.framework; sourceTree = "<group>"; };
+		5F41632C1D0D86290017A57C /* Commander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Commander.framework; path = Carthage/Build/Mac/Commander.framework; sourceTree = "<group>"; };
+		5F41632D1D0D86290017A57C /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/Mac/Freddy.framework; sourceTree = "<group>"; };
+		5F41632E1D0D86290017A57C /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/Mac/SWXMLHash.framework; sourceTree = "<group>"; };
 		5F6601721C820E2D003B2FA5 /* SparklerKit.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = SparklerKit.modulemap; path = SparklerKit/SparklerKit.modulemap; sourceTree = SOURCE_ROOT; };
 		5F6601741C820ECB003B2FA5 /* SparklerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparklerKit.h; path = SparklerKit/SparklerKit.h; sourceTree = SOURCE_ROOT; };
 		5F6601761C82109B003B2FA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F6601781C82192F003B2FA5 /* UpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
-		5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Rome/SwiftyJSON.framework; sourceTree = "<group>"; };
 		5F9B19851C822C2800FF1E85 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5FCAE2E41C7DEBFE00D36D0A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../Sparkler/main.swift; sourceTree = "<group>"; };
 		5FCAE2F01C7DED0400D36D0A /* SparklerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SparklerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FCAE2FD1C7DFF4500D36D0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Rome/Alamofire.framework; sourceTree = "<group>"; };
-		5FCAE2FE1C7DFF4500D36D0A /* AmazonS3RequestManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AmazonS3RequestManager.framework; path = Rome/AmazonS3RequestManager.framework; sourceTree = "<group>"; };
-		5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Rome/SWXMLHash.framework; sourceTree = "<group>"; };
 		5FCAE30B1C7E15DD00D36D0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Commander.framework; path = Rome/Commander.framework; sourceTree = "<group>"; };
 		5FCAE3131C7E1D6E00D36D0A /* sparkler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sparkler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCAE3171C7E1D6E00D36D0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FCAE31A1C7E1D6F00D36D0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -111,9 +99,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FCAE3341C7E1D9500D36D0A /* Foundation.framework in Frameworks */,
-				5FCAE33F1C7E2D0E00D36D0A /* Commander.framework in Frameworks */,
-				5F06C30D1C8262B200D9B202 /* Freddy.framework in Frameworks */,
-				5F06C30F1C83082E00D9B202 /* SWXMLHash.framework in Frameworks */,
+				5F4163301D0D86290017A57C /* Freddy.framework in Frameworks */,
+				5F4163311D0D86290017A57C /* SWXMLHash.framework in Frameworks */,
+				5F41632F1D0D86290017A57C /* Commander.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FCAE3351C7E1DBB00D36D0A /* SparklerKit.framework in Frameworks */,
-				5FCAE33E1C7E2CFB00D36D0A /* Commander.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,13 +161,10 @@
 		5FCAE3031C7DFF4700D36D0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5F06C30C1C8262B200D9B202 /* Freddy.framework */,
-				5F66017A1C8222F7003B2FA5 /* SwiftyJSON.framework */,
-				5FCAE30D1C7E1C0D00D36D0A /* Commander.framework */,
+				5F41632C1D0D86290017A57C /* Commander.framework */,
+				5F41632D1D0D86290017A57C /* Freddy.framework */,
+				5F41632E1D0D86290017A57C /* SWXMLHash.framework */,
 				5FCAE30B1C7E15DD00D36D0A /* Foundation.framework */,
-				5FCAE2FD1C7DFF4500D36D0A /* Alamofire.framework */,
-				5FCAE2FE1C7DFF4500D36D0A /* AmazonS3RequestManager.framework */,
-				5FCAE2FF1C7DFF4500D36D0A /* SWXMLHash.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -502,8 +486,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Rome",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SparklerKit/Info.plist;
@@ -534,8 +517,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Rome",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SparklerKit/Info.plist;
@@ -560,8 +542,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Rome",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = sparkler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../Frameworks/SparklerKit.framework/Versions/Current/Frameworks";
@@ -586,8 +567,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Rome",
-					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = sparkler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../Frameworks/SparklerKit.framework/Versions/Current/Frameworks";

@@ -1,0 +1,9 @@
+[submodule "Carthage/Checkouts/Commander"]
+	path = Carthage/Checkouts/Commander
+	url = ssh://git@github.com/mz2/Commander.git
+[submodule "Carthage/Checkouts/Freddy"]
+	path = Carthage/Checkouts/Freddy
+	url = ssh://git@github.com/bignerdranch/Freddy.git
+[submodule "Carthage/Checkouts/SWXMLHash"]
+	path = Carthage/Checkouts/SWXMLHash
+	url = ssh://git@github.com/drmohundro/SWXMLHash.git

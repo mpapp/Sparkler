@@ -1,2 +1,3 @@
-github "Alamofire/Alamofire" "3.2.0"
-github "kylef/Commander" "0.4.1"
+github "mz2/Commander" "4d702e78d9e6dae85a2888b57a77541978c9cf98"
+github "bignerdranch/Freddy" "c9ada82c3c3f6539dee350ebf1117c35d146cb4d"
+github "drmohundro/SWXMLHash" "8c9d152fcd04039b76f3b365a6d48585f454733b"
